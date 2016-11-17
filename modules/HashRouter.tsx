@@ -11,17 +11,25 @@ const createHref = hashType => path => {
   switch (hashType) {
     case 'hashbang':
       newPath = path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path)
-    break
+      break
     case 'noslash':
       newPath = stripLeadingSlash(path)
-    break
+      break
     case 'slash':
     default:
       newPath = addLeadingSlash(path)
-    break
+      break
   }
 
   return `#${newPath}`
+}
+
+
+type HashRouterProps = {
+  basename?: string,
+  getUserConfirmation?: Function,
+  hashType?: string,
+  children?: Function | Node
 }
 
 /**
@@ -32,29 +40,29 @@ const HashRouter = ({
   getUserConfirmation,
   hashType,
   ...routerProps
-}) => (
-  <History
-    createHistory={createHashHistory}
-    historyOptions={{
-      basename,
-      getUserConfirmation,
-      hashType
-    }}
-  >
-    {({ history, action, location }) => (
-      <StaticRouter
-        action={action}
-        location={location}
-        basename={basename}
-        onPush={history.push}
-        onReplace={history.replace}
-        blockTransitions={history.block}
-        createHref={createHref(hashType)}
-        {...routerProps}
-      />
-    )}
-  </History>
-)
+}: HashRouterProps) => (
+    <History
+      createHistory={createHashHistory}
+      historyOptions={{
+        basename,
+        getUserConfirmation,
+        hashType
+      }}
+      >
+      {({ history, action, location }) => (
+        <StaticRouter
+          action={action}
+          location={location}
+          basename={basename}
+          onPush={history.push}
+          onReplace={history.replace}
+          blockTransitions={history.block}
+          createHref={createHref(hashType)}
+          {...routerProps}
+          />
+      )}
+    </History>
+  )
 
 if (__DEV__) {
   HashRouter.propTypes = {
