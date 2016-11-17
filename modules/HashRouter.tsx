@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import createHashHistory from 'history/createHashHistory'
 import History from './History'
 import { addLeadingSlash, stripLeadingSlash } from 'history/PathUtils'

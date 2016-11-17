@@ -1,9 +1,16 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import MatchProvider from './MatchProvider'
 import matchPattern from './matchPattern'
 import { LocationSubscriber } from './Broadcasts'
 
-class RegisterMatch extends React.Component {
+
+export type RegisterMatchProps = {
+  children?: Node,
+  match?: any
+}
+
+class RegisterMatch extends React.Component<RegisterMatchProps, any> {
   static contextTypes = {
     match: PropTypes.object,
     serverRouter: PropTypes.object
@@ -60,7 +67,17 @@ if (__DEV__) {
   }
 }
 
-class Match extends React.Component {
+
+export type MatchTypes = {
+  pattern?: string,
+  exactly?: boolean,
+  location?: {},
+  children?: Function,
+  render?: Function,
+  component?: Function
+}
+
+class Match extends React.Component<MatchTypes, any> {
   static defaultProps = {
     exactly: false
   }

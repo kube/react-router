@@ -1,9 +1,17 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
+
 import {
   matchContext as matchContextType
 } from './PropTypes'
 
-class MatchProvider extends React.Component {
+
+export type MatchProviderProps = {
+  match?: any,
+  children?: Node
+}
+
+class MatchProvider extends React.Component<MatchProviderProps, any> {
   static childContextTypes = {
     match: matchContextType.isRequired
   }
@@ -74,6 +82,7 @@ class MatchProvider extends React.Component {
   }
 
   render() {
+    // WHHAAT???
     return this.props.children
   }
 }

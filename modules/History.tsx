@@ -1,13 +1,24 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import { historyContext as historyContextType } from './PropTypes'
+
+
+export type HistoryProps = {
+  children?: Function | Node,
+  createHistory: Function,
+  historyOptions?: Object
+}
 
 /**
  * The common public API for all *History components.
  */
-class History extends React.Component {
+class History extends React.Component<HistoryProps, void> {
   static childContextTypes = {
     history: historyContextType.isRequired
   }
+
+  private history
+  private unlisten
 
   getChildContext() {
     return {

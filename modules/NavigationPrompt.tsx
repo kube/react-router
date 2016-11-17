@@ -1,7 +1,14 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import { historyContext as historyContextType } from './PropTypes'
 
-class NavigationPrompt extends React.Component {
+
+export type NavigationPromptProps = {
+  when?: boolean,
+  message: Function | string
+}
+
+class NavigationPrompt extends React.Component<NavigationPrompt, any> {
   static contextTypes = {
     history: historyContextType.isRequired
   }

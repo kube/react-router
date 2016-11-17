@@ -1,9 +1,17 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
+
 import {
   routerContext as routerContextType
 } from './PropTypes'
 
-class Redirect extends React.Component {
+
+export type RedirectProps = {
+  to: string | Object,
+  push?: boolean
+}
+
+class Redirect extends React.Component<RedirectProps, any> {
   static defaultProps = {
     push: false
   }

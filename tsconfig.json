@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es6",
+        "noImplicitAny": false,
+        "jsx": "react",
+        "declaration": true,
+        "rootDir": "modules",
+        "outDir": "dist"
+    }
+}

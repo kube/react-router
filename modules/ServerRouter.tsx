@@ -1,7 +1,15 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import StaticRouter from './StaticRouter'
 
-class ServerRouter extends React.Component {
+
+export type ServerRouterProps = {
+  context: Object,
+  location: String,
+  children?: Function | Node
+}
+
+class ServerRouter extends React.Component<ServerRouterProps, any> {
   static childContextTypes = {
     serverRouter: PropTypes.object.isRequired
   }
@@ -24,7 +32,7 @@ class ServerRouter extends React.Component {
         onReplace={redirect}
         onPush={redirect}
         {...rest}
-      />
+        />
     )
   }
 }

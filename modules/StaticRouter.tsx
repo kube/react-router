@@ -1,22 +1,46 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import { stringify, parse as parseQueryString } from 'query-string'
 import MatchProvider from './MatchProvider'
 import { LocationBroadcast } from './Broadcasts'
+
 import {
   locationsAreEqual,
   createRouterLocation,
   createRouterPath
 } from './LocationUtils'
+
 import {
+  History as HistoryType,
+  Action as ActionType,
   action as actionType,
   routerContext as routerContextType
 } from './PropTypes'
+
 
 const stringifyQuery = (query) => (
   stringify(query).replace(/%20/g, '+')
 )
 
-class StaticRouter extends React.Component {
+
+export type StaticRouterProps = {
+  action: ActionType,
+  location: {} | string,
+  onPush: (cb) => void,
+  onReplace: (cb) => void,
+  blockTransitions?: Function
+  stringifyQuery?: Function,
+  parseQueryString?: Function,
+  createHref?: Function,
+  basename?: string,
+}
+
+export type StaticRouterState = any
+
+
+class StaticRouter
+  extends React.Component<StaticRouterProps, StaticRouterState> {
+
   static defaultProps = {
     stringifyQuery,
     parseQueryString,
@@ -98,8 +122,8 @@ class StaticRouter extends React.Component {
           {typeof children === 'function' ? (
             children({ action, location, router: this.getRouterContext() })
           ) : (
-            React.Children.only(children)
-          )}
+              React.Children.only(children)
+            )}
         </MatchProvider>
       </LocationBroadcast>
     )
@@ -108,10 +132,10 @@ class StaticRouter extends React.Component {
 
 if (__DEV__) {
   StaticRouter.propTypes = {
-    children: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 
     action: actionType.isRequired,
-    location: PropTypes.oneOfType([ PropTypes.object, PropTypes.string ]).isRequired,
+    location: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
 
     onPush: PropTypes.func.isRequired,
     onReplace: PropTypes.func.isRequired,

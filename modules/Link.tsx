@@ -1,10 +1,28 @@
-import React, { PropTypes } from 'react'
+import * as React from 'react'
+import { PropTypes } from 'react'
 import { LocationSubscriber } from './Broadcasts'
+
 import {
   routerContext as routerContextType
 } from './PropTypes'
 
-class Link extends React.Component {
+
+export type LinkProps = {
+  to: string | Object,
+  replace?: boolean,
+  activeStyle?: Object,
+  activeClassName?: string,
+  location?: Object,
+  activeOnlyWhenExact?: boolean,
+  isActive?: Function,
+  children?: Node | Function,
+  style?: Object,
+  className?: string,
+  target?: string,
+  onClick?: Function
+}
+
+class Link extends React.Component<LinkProps, any> {
   static defaultProps = {
     replace: false,
     activeOnlyWhenExact: false,

@@ -1,7 +1,15 @@
-import React, { PropTypes } from 'react'
-import { location as locationType } from './PropTypes'
+import * as React from 'react'
+import { PropTypes } from 'react'
+import { Location as LocationType, location as locationType } from './PropTypes'
 
-class Miss extends React.Component {
+export type MissProps = {
+  children?: Node,
+  location?: LocationType,
+  render?: Function,
+  component?: Function
+}
+
+class Miss extends React.Component<MissProps, any> {
   static contextTypes = {
     match: PropTypes.object,
     location: PropTypes.object,

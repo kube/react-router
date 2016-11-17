@@ -1,21 +1,31 @@
-import React, { PropTypes } from 'react'
-import createBrowserHistory from 'history/createBrowserHistory'
+import * as React from 'react'
+import { PropTypes } from 'react'
+import createMemoryHistory from 'history/createMemoryHistory'
 import StaticRouter from './StaticRouter'
 import History from './History'
 
-const BrowserRouter = ({
-  basename,
-  forceRefresh,
+
+export type MemoryRouterTypes = {
+  getUserConfirmation?: Function,
+  initialEntries?: Array<any>,
+  initialIndex?: number,
+  keyLength?: number,
+  children?: Function | Node
+}
+
+const MemoryRouter = ({
   getUserConfirmation,
+  initialEntries,
+  initialIndex,
   keyLength,
   ...routerProps
-}) => (
+}: MemoryRouterTypes) => (
   <History
-    createHistory={createBrowserHistory}
+    createHistory={createMemoryHistory}
     historyOptions={{
-      basename,
-      forceRefresh,
       getUserConfirmation,
+      initialEntries,
+      initialIndex,
       keyLength
     }}
   >
@@ -23,7 +33,6 @@ const BrowserRouter = ({
       <StaticRouter
         action={action}
         location={location}
-        basename={basename}
         onPush={history.push}
         onReplace={history.replace}
         blockTransitions={history.block}
@@ -34,10 +43,10 @@ const BrowserRouter = ({
 )
 
 if (__DEV__) {
-  BrowserRouter.propTypes = {
-    basename: PropTypes.string,
-    forceRefresh: PropTypes.bool,
+  MemoryRouter.propTypes = {
     getUserConfirmation: PropTypes.func,
+    initialEntries: PropTypes.array,
+    initialIndex: PropTypes.number,
     keyLength: PropTypes.number,
     children: PropTypes.oneOfType([
       PropTypes.func,
@@ -46,4 +55,4 @@ if (__DEV__) {
   }
 }
 
-export default BrowserRouter
+export default MemoryRouter

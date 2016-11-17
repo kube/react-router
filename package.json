@@ -27,15 +27,17 @@
     "lint": "eslint modules"
   },
   "dependencies": {
+    "history": "^4.3.0",
     "path-to-regexp": "^1.5.3",
     "query-string": "4.2.3",
-    "react-broadcast": "^0.1.1",
-    "history": "^4.3.0"
+    "react-broadcast": "^0.1.1"
   },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
+    "@types/history": "^2.0.39",
+    "@types/react": "^0.14.49",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
@@ -64,6 +66,7 @@
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.0",
     "readline-sync": "^1.4.4",
+    "typescript": "next",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
