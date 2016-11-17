@@ -5,7 +5,7 @@ import StaticRouter from './StaticRouter'
 import History from './History'
 
 
-export type MemoryRouterTypes = {
+export type MemoryRouterProps = {
   getUserConfirmation?: Function,
   initialEntries?: Array<any>,
   initialIndex?: number,
@@ -19,7 +19,7 @@ const MemoryRouter = ({
   initialIndex,
   keyLength,
   ...routerProps
-}: MemoryRouterTypes) => (
+}: MemoryRouterProps) => (
   <History
     createHistory={createMemoryHistory}
     historyOptions={{
