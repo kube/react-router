@@ -35,11 +35,8 @@ export type StaticRouterProps = {
   basename?: string,
 }
 
-export type StaticRouterState = any
-
-
 class StaticRouter
-  extends React.Component<StaticRouterProps, StaticRouterState> {
+  extends React.Component<StaticRouterProps, any> {
 
   static defaultProps = {
     stringifyQuery,
