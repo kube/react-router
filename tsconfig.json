@@ -6,6 +6,7 @@
         "jsx": "react",
         "declaration": true,
         "rootDir": "modules",
-        "outDir": "dist"
+        "outDir": "dist",
+        "declarationDir": "types"
     }
 }
