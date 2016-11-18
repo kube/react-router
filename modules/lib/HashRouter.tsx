@@ -35,30 +35,25 @@ export type HashRouterProps = {
 /**
  * A router that uses the URL hash.
  */
-const HashRouter = ({
-  basename,
-  getUserConfirmation,
-  hashType,
-  ...routerProps
-}: HashRouterProps) => (
+const HashRouter = (props: HashRouterProps) => (
     <History
       createHistory={createHashHistory}
       historyOptions={{
-        basename,
-        getUserConfirmation,
-        hashType
+        basename: props.basename,
+        getUserConfirmation: props.getUserConfirmation,
+        hashType: props.hashType
       }}
       >
       {({ history, action, location }) => (
         <StaticRouter
           action={action}
           location={location}
-          basename={basename}
+          basename={props.basename}
           onPush={history.push}
           onReplace={history.replace}
           blockTransitions={history.block}
-          createHref={createHref(hashType)}
-          {...routerProps}
+          createHref={createHref(props.hashType)}
+          // {...routerProps}
           />
       )}
     </History>
