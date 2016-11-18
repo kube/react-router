@@ -25,7 +25,7 @@ const createHref = hashType => path => {
 }
 
 
-type HashRouterProps = {
+export type HashRouterProps = {
   basename?: string,
   getUserConfirmation?: Function,
   hashType?: string,
