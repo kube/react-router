@@ -1,17 +1,17 @@
-import Link from './lib/Link'
-import Match from './lib/Match'
-import Miss from './lib/Miss'
-import NavigationPrompt from './lib/NavigationPrompt'
-import Redirect from './lib/Redirect'
+import Link, { LinkProps } from './lib/Link'
+import Match, { MatchProps } from './lib/Match'
+import Miss, { MissProps } from './lib/Miss'
+import NavigationPrompt, { NavigationPromptProps } from './lib/NavigationPrompt'
+import Redirect, { RedirectProps } from './lib/Redirect'
 
 // High-level wrappers
-import BrowserRouter from './lib/BrowserRouter'
-import HashRouter from './lib/HashRouter'
-import MemoryRouter from './lib/MemoryRouter'
-import ServerRouter from './lib/ServerRouter'
+import BrowserRouter, { BrowserRouterProps } from './lib/BrowserRouter'
+import HashRouter, { HashRouterProps } from './lib/HashRouter'
+import MemoryRouter, { MemoryRouterProps } from './lib/MemoryRouter'
+import ServerRouter, { ServerRouterProps } from './lib/ServerRouter'
 
 // Low-level building block
-import StaticRouter from './lib/StaticRouter'
+import StaticRouter, { StaticRouterProps } from './lib/StaticRouter'
 
 // Util for server rendering "pre-render match"
 import matchPattern from './lib/matchPattern'
@@ -25,15 +25,25 @@ import * as PropTypes from './lib/PropTypes'
 
 export {
     Link,
+    LinkProps,
     Match,
+    MatchProps,
     Miss,
+    MissProps,
     NavigationPrompt,
+    NavigationPromptProps,
     Redirect,
+    RedirectProps,
     BrowserRouter,
+    BrowserRouterProps,
     HashRouter,
+    HashRouterProps,
     MemoryRouter,
+    MemoryRouterProps,
     ServerRouter,
+    ServerRouterProps,
     StaticRouter,
+    StaticRouterProps,
     matchPattern,
     createServerRenderContext,
     PropTypes
