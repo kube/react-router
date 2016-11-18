@@ -68,7 +68,7 @@ if (__DEV__) {
 }
 
 
-export type MatchTypes = {
+export type MatchProps = {
   pattern?: string,
   exactly?: boolean,
   location?: {},
@@ -77,7 +77,7 @@ export type MatchTypes = {
   component?: Function
 }
 
-class Match extends React.Component<MatchTypes, any> {
+class Match extends React.Component<MatchProps, any> {
   static defaultProps = {
     exactly: false
   }
