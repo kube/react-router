@@ -5,7 +5,7 @@ import StaticRouter from './StaticRouter'
 import History from './History'
 
 
-type BrowserRouterProps = {
+export type BrowserRouterProps = {
   basename?: string,
   forceRefresh?: boolean,
   getUserConfirmation?: Function,
@@ -13,35 +13,29 @@ type BrowserRouterProps = {
   children?: Function | Node
 }
 
-const BrowserRouter = ({
-  basename,
-  forceRefresh,
-  getUserConfirmation,
-  keyLength,
-  ...routerProps
-}: BrowserRouterProps) => (
-    <History
-      createHistory={createBrowserHistory}
-      historyOptions={{
-        basename,
-        forceRefresh,
-        getUserConfirmation,
-        keyLength
-      }}
-      >
-      {({ history, action, location }) => (
-        <StaticRouter
-          action={action}
-          location={location}
-          basename={basename}
-          onPush={history.push}
-          onReplace={history.replace}
-          blockTransitions={history.block}
-          {...routerProps}
-          />
-      )}
-    </History>
-  )
+const BrowserRouter = (props: BrowserRouterProps) => (
+  <History
+    createHistory={createBrowserHistory}
+    historyOptions={{
+      basename: props.basename,
+      forceRefresh: props.forceRefresh,
+      getUserConfirmation: props.getUserConfirmation,
+      keyLength: props.keyLength
+    }}
+    >
+    {({ history, action, location }) => (
+      <StaticRouter
+        action={action}
+        location={location}
+        basename={props.basename}
+        onPush={history.push}
+        onReplace={history.replace}
+        blockTransitions={history.block}
+        // {...routerProps}
+        />
+    )}
+  </History>
+)
 
 if (__DEV__) {
   BrowserRouter.propTypes = {
